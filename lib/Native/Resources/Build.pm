@@ -30,7 +30,7 @@ module Native::Resources::Build {
         %vars<FAKESO> = @fake-shared-object-extensions.map("resources/lib/lib$libname" ~ *).eager;
 
         my $fake-so-rules = %vars<FAKESO>.map(-> $filename {
-            qq{$filename:\n\tperl6 -e "print ''" > $filename}
+            qq{$filename:\n\tperl -e "print ''" > $filename}
         }).join("\n");
 
         mkdir($destfolder);
